@@ -6,13 +6,13 @@ using RestSharp.Serializers.NewtonsoftJson;
 
 namespace Fortnite.Net.Services
 {
-    public abstract class EpicService
+    public abstract class EpicServiceBase
     {
 
         internal readonly FortniteApi _api;
         internal readonly RestClient _restClient;
 
-        internal EpicService(FortniteApi api, string baseUrl)
+        internal EpicServiceBase(FortniteApi api, string baseUrl)
         {
             _api = api;
             _restClient = new RestClient(baseUrl);

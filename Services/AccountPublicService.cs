@@ -4,7 +4,7 @@ using RestSharp;
 
 namespace Fortnite.Net.Services
 {
-    public sealed class AccountPublicService : EpicService
+    public sealed class AccountPublicService : EpicServiceBase
     {
 
         public AccountPublicService(FortniteApi api) : base(api, "https://account-public-service-prod.ol.epicgames.com/")

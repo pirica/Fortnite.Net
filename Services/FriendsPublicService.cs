@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Fortnite.Net.Model.Friend;
-using Fortnite.Net.Utils;
 using RestSharp;
 
 namespace Fortnite.Net.Services
 {
-    public sealed class FriendsPublicService : EpicService
+    public sealed class FriendsPublicService : EpicServiceBase
     { 
         
         public FriendsPublicService(FortniteApi api) : base(api, "https://friends-public-service-prod.ol.epicgames.com/")

@@ -30,33 +30,33 @@ namespace Fortnite.Net
         public Device? Device { get; set; }
         public LoginModel LoginModel { get; set; }
 
-        private AccountPublicService _accountPublicService;
-        public AccountPublicService AccountPublicService
+        private AccountPublicService _accountPublicServiceBase;
+        public AccountPublicService AccountPublicServiceBase
         {
             get
             {
                 VerifyLogin();
-                return _accountPublicService;
+                return _accountPublicServiceBase;
             }
         }
         
-        private FriendsPublicService _friendsPublicService;
-        public FriendsPublicService FriendsPublicService
+        private FriendsPublicService _friendsPublicServiceBase;
+        public FriendsPublicService FriendsPublicServiceBase
         {
             get
             {
                 VerifyLogin();
-                return _friendsPublicService;
+                return _friendsPublicServiceBase;
             }
         }
         
-        private FortnitePublicService _fortnitePublicService;
-        public FortnitePublicService FortnitePublicService
+        private FortnitePublicService _fortnitePublicServiceBase;
+        public FortnitePublicService FortnitePublicServiceBase
         {
             get
             {
                 VerifyLogin();
-                return _fortnitePublicService;
+                return _fortnitePublicServiceBase;
             }
         }
         
@@ -87,9 +87,9 @@ namespace Fortnite.Net
             };
             Login += _ =>
             {
-                _accountPublicService = new AccountPublicService(this);
-                _friendsPublicService = new FriendsPublicService(this);
-                _fortnitePublicService = new FortnitePublicService(this);
+                _accountPublicServiceBase = new AccountPublicService(this);
+                _friendsPublicServiceBase = new FriendsPublicService(this);
+                _fortnitePublicServiceBase = new FortnitePublicService(this);
                 //XmppService = new XmppService(this);
             };
         }

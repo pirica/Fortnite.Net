@@ -3,6 +3,14 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp5.0</TargetFramework>
         <LangVersion>9</LangVersion>
+        <Title>Fortnite.Net</Title>
+        <PackageProjectUrl>https://github.com/thoo0224/Fortnite.Net</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/thoo0224/Fortnite.Net</PackageLicenseUrl>
+        <PackageIconUrl>https://pbs.twimg.com/profile_images/1349105931603292162/2GoYgBnC_400x400.jpg</PackageIconUrl>
+        <RepositoryUrl>https://github.com/thoo0224/Fortnite.Net/blob/master/LICENSE</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>Fortnite.Net.Thoo</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
