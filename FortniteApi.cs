@@ -116,7 +116,7 @@ namespace Fortnite.Net
                     if (grabLatestUserAgent || _userAgent == null)
                     {
                         var manifest = await _launcherPublicService.GetManifestAsync();
-                        _userAgent = $"{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
+                        _userAgent = $"Fortnite/{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
                     }
                 });
                 _restClient.UserAgent = _userAgent;
