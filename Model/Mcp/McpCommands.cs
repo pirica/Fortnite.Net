@@ -34,8 +34,8 @@
         public const string IssueFriendCode = "IssueFriendCode"; // Profiles: common_core | MCPs: fortnite
         public const string MarkItemSeen = "MarkItemSeen"; // Profiles: athena | MCPs: fortnite
         public const string MarkNewQuestNotificationSent = "MarkNewQuestNotificationSent"; // Profile: athena | MCPs: fortnite
-        public const string OpenCardPack = "OpenCardPack";
-        public const string PopulatePrerolledOffers = "PopulatePrerolledOffers";
+        public const string OpenCardPack = "OpenCardPack"; // Profiles: campaign | MCPs: fortnite
+        public const string PopulatePrerolledOffers = "PopulatePrerolledOffers"; // Profiles: campaign | MCPs: fortnite
         public const string PurchaseCatalogEntry = "PurchaseCatalogEntry";
         public const string PurchaseOrUpgradeHomebaseNode = "PurchaseOrUpgradeHomebaseNode";
         public const string PurchaseResearchStatUpgrade = "PurchaseResearchStatUpgrade";

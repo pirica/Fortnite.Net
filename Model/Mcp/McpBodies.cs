@@ -160,5 +160,27 @@
             ItemId = itemIds
         };
 
+        public static object CreateOpenCardPackPayload(string cardPackItemId) => new
+        {
+            CardPackItemId = cardPackItemId
+        };
+
+        public static object CreatePopulatePrerolledOffersPayload() => new object();
+
+        public static object CreatePurchaseCatalogEntryPayload(
+            string offerId,
+            int purchaseQuantity,
+            string currency,
+            int expectedTotalPrice,
+            string gameContext
+        ) => new
+        {
+            OfferId = offerId,
+            PurchaseQuantity = purchaseQuantity,
+            Currency = currency,
+            ExpectedTotalPrice = expectedTotalPrice,
+            GameContext = gameContext
+        };
+        
     }
 }

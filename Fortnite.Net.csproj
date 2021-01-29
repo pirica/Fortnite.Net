@@ -20,4 +20,8 @@
       <PackageReference Include="Waher.Networking.XMPP.WebSocket" Version="1.1.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Model\Manifast" />
+    </ItemGroup>
+
 </Project>

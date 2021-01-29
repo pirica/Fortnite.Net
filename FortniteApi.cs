@@ -26,9 +26,13 @@ namespace Fortnite.Net
         private readonly string _clientToken;
         private readonly string _authorizationCode;
         private string _exchangeCode;
+        private string? _userAgent;
+        private bool _grabLatestUserAgent;
 
         public Device? Device { get; set; }
         public LoginModel LoginModel { get; set; }
+        
+        public LoginModel EgLoginModel { get; set; }//Fortnite/++Fortnite+Release-7.01-CL-4644078 IOS/11.3.1
 
         private AccountPublicService _accountPublicService;
         public AccountPublicService AccountPublicService
@@ -59,7 +63,18 @@ namespace Fortnite.Net
                 return _fortnitePublicService;
             }
         }
-        
+
+        private LauncherPublicService _launcherPublicService;
+
+        public LauncherPublicService LauncherPublicService
+        {
+            get
+            {
+                VerifyLogin();
+                return _launcherPublicService;
+            }
+        }
+
         //public XmppService XmppService { get; set; }
         
 #pragma warning disable 8618
@@ -68,9 +83,13 @@ namespace Fortnite.Net
             string exchangeCode,
             string authorizationCode,
             Device? device,
-            string clientToken)
+            string clientToken,
+            string userAgent,
+            bool grabLatestUserAgent)
         {
             Device = device;
+            _userAgent = userAgent;
+            _grabLatestUserAgent = grabLatestUserAgent;
             _exchangeCode = exchangeCode;
             _authorizationCode = authorizationCode;
             _clientToken = clientToken;
@@ -87,9 +106,20 @@ namespace Fortnite.Net
             };
             Login += _ =>
             {
+                
                 _accountPublicService = new AccountPublicService(this);
                 _friendsPublicService = new FriendsPublicService(this);
                 _fortnitePublicService = new FortnitePublicService(this);
+                _launcherPublicService = new LauncherPublicService(this);
+                Task.Factory.StartNew(async () =>
+                {
+                    if (grabLatestUserAgent || _userAgent == null)
+                    {
+                        var manifest = await _launcherPublicService.GetManifestAsync();
+                        _userAgent = $"{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
+                    }
+                });
+                _restClient.UserAgent = _userAgent;
                 //XmppService = new XmppService(this);
             };
         }

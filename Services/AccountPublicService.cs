@@ -43,5 +43,13 @@ namespace Fortnite.Net.Services
         public VerifyResponse VerifyToken(string token, bool includePerms = false) =>
             VerifyTokenAsync(token, includePerms).GetAwaiter().GetResult();
 
+        public async Task<LoginModel> GetEgToken() => 
+            await SendBaseAsync<LoginModel>("/account/api/oauth/token", Method.POST, false, request =>
+            {
+                request.AddParameter("grant_type", "client_credentials");
+                request.AddParameter("token_type", "eg1");
+                request.AddHeader("Authorization", $"basic {ClientToken.EgsClient}");
+            });
+
     }
 }

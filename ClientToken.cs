@@ -8,6 +8,7 @@ namespace Fortnite.Net
 
         public static readonly string FortnitePcGameClient = CreateToken("ec684b8c687f479fadea3cb2ad83f5c6", "e1f31c211f28413186262d37a13fc84d");
         public static readonly string FortniteIosGameClient = CreateToken("3446cd72694c4a4485d81b77adbb2141", "9209d4a5e25a457fb9b07489d313b41a");
+        public static readonly string EgsClient = CreateToken("34a02cf8f4414e29b15921876da36f9a", "daafbccc737745039dffe53d94fc76cf");
 
         internal static string CreateToken(string clientId, string secret) =>
             Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{secret}"));

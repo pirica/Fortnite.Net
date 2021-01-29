@@ -13,7 +13,7 @@ namespace Fortnite.Net.Services
         public async Task<object> ClientCommandAsync(string command, string profileId, object body) =>
             await SendBaseAsync<object>($"/fortnite/api/game/v2/profile/{_api.LoginModel.AccountId}/client/{command}?profileId={profileId}", Method.POST, true, request =>
             {
-                request.AddJsonBody(body!);
+                request.AddJsonBody(body);
             });
 
         public object ClientCommand(string command, string profileId, object body) =>
