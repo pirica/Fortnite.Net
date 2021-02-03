@@ -55,7 +55,7 @@ namespace Fortnite.Net
         }
 //Windows/10.0.17134.1.768.64bit
         public FortniteApi Build() =>
-            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent, GrabLatestUseragent);
+            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent);
 
         }
 }

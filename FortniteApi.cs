@@ -27,7 +27,6 @@ namespace Fortnite.Net
         private readonly string _authorizationCode;
         private string _exchangeCode;
         private string? _userAgent;
-        private bool _grabLatestUserAgent;
 
         public Device? Device { get; set; }
         public LoginModel LoginModel { get; set; }
@@ -84,12 +83,10 @@ namespace Fortnite.Net
             string authorizationCode,
             Device? device,
             string clientToken,
-            string userAgent,
-            bool grabLatestUserAgent)
+            string? userAgent)
         {
             Device = device;
             _userAgent = userAgent;
-            _grabLatestUserAgent = grabLatestUserAgent;
             _exchangeCode = exchangeCode;
             _authorizationCode = authorizationCode;
             _clientToken = clientToken;
@@ -104,21 +101,19 @@ namespace Fortnite.Net
                 Formatting = Formatting.None,
                 ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
             };
-            Login += _ =>
+            Login += async _ =>
             {
-                
+
                 _accountPublicService = new AccountPublicService(this);
                 _friendsPublicService = new FriendsPublicService(this);
                 _fortnitePublicService = new FortnitePublicService(this);
                 _launcherPublicService = new LauncherPublicService(this);
-                Task.Factory.StartNew(async () =>
+                if (_userAgent == null)
                 {
-                    if (grabLatestUserAgent || _userAgent == null)
-                    {
-                        var manifest = await _launcherPublicService.GetManifestAsync();
-                        _userAgent = $"Fortnite/{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
-                    }
-                });
+                    var manifest = await _launcherPublicService.GetManifestAsync();
+                    _userAgent = $"Fortnite/{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
+                }
+
                 _restClient.UserAgent = _userAgent;
                 //XmppService = new XmppService(this);
             };
