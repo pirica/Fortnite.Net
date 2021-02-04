@@ -29,7 +29,6 @@ namespace Fortnite.Net.Services
             var item = _api._cache.Get<T>(resource);
             if (item != null)
             {
-                Console.WriteLine($"Got object from cache with key {resource}");
                 return item;
             }
             var request = new RestRequest(resource, method);
