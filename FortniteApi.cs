@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Timers;
+using Fortnite.Net.Cache;
 using Fortnite.Net.Model.Account;
 using Fortnite.Net.Services;
 using Fortnite.Net.Utils;
@@ -13,6 +14,11 @@ namespace Fortnite.Net
 {
     public sealed class FortniteApi : IFortniteApi
     {
+
+        internal static readonly RestClient DefaultRestClient = new RestClient();
+
+        internal readonly InMemoryCache _cache;
+        internal readonly int _cacheSeconds;
         
         public delegate void LoginEventHandler(LoginModel model);
         public event LoginEventHandler? Login;
@@ -22,16 +28,14 @@ namespace Fortnite.Net
         
         private readonly RestClient _restClient;
         private Timer _timer;
-        
         private readonly string _clientToken;
         private readonly string _authorizationCode;
         private string _exchangeCode;
-        private string? _userAgent;
 
         public Device? Device { get; set; }
         public LoginModel LoginModel { get; set; }
         
-        public LoginModel EgLoginModel { get; set; }//Fortnite/++Fortnite+Release-7.01-CL-4644078 IOS/11.3.1
+        public LoginModel EgLoginModel { get; set; }
 
         private AccountPublicService _accountPublicService;
         public AccountPublicService AccountPublicService
@@ -74,8 +78,6 @@ namespace Fortnite.Net
             }
         }
 
-        //public XmppService XmppService { get; set; }
-        
 #pragma warning disable 8618
         public FortniteApi(
 #pragma warning restore 8618
@@ -83,10 +85,12 @@ namespace Fortnite.Net
             string authorizationCode,
             Device? device,
             string clientToken,
-            string? userAgent)
+            string? userAgent,
+            int cacheSeconds)
         {
             Device = device;
-            _userAgent = userAgent;
+            _cache = new InMemoryCache(this);
+            _cacheSeconds = cacheSeconds;
             _exchangeCode = exchangeCode;
             _authorizationCode = authorizationCode;
             _clientToken = clientToken;
@@ -108,14 +112,14 @@ namespace Fortnite.Net
                 _friendsPublicService = new FriendsPublicService(this);
                 _fortnitePublicService = new FortnitePublicService(this);
                 _launcherPublicService = new LauncherPublicService(this);
-                if (_userAgent == null)
+
+                if (userAgent == null)
                 {
                     var manifest = await _launcherPublicService.GetManifestAsync();
-                    _userAgent = $"Fortnite/{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
+                    userAgent = $"Fortnite/{manifest.BuildVersion} Windows/10.0.17134.1.768.64bit";
                 }
 
-                _restClient.UserAgent = _userAgent;
-                //XmppService = new XmppService(this);
+                _restClient.UserAgent = userAgent;
             };
         }
 

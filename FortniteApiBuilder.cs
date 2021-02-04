@@ -1,6 +1,10 @@
 ﻿#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using Fortnite.Net.Model.Account;
 using Newtonsoft.Json;
 
@@ -14,7 +18,13 @@ namespace Fortnite.Net
         public Device Device { get; set; } = null!;
         public string? ClientToken { get; set; }
         public string? UserAgent { get; set; }
-        public bool GrabLatestUseragent { get; set; } = true;
+        public int CacheSeconds { get; set; }
+
+        public FortniteApiBuilder UseCache(int cacheSeconds = 60)
+        {
+            CacheSeconds = cacheSeconds;
+            return this;
+        }
 
         public FortniteApiBuilder SetExchangeToken(string exchangeToken)
         {
@@ -25,7 +35,6 @@ namespace Fortnite.Net
         public FortniteApiBuilder SetUserAgent(string userAgent)
         {
             UserAgent = userAgent;
-            GrabLatestUseragent = false;
             return this;
         }
 
@@ -53,9 +62,9 @@ namespace Fortnite.Net
             ClientToken = clientToken;
             return this;
         }
-//Windows/10.0.17134.1.768.64bit
+        
         public FortniteApi Build() =>
-            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent);
+            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent, CacheSeconds);
 
         }
 }

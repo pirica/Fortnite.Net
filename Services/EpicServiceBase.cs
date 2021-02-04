@@ -23,8 +23,15 @@ namespace Fortnite.Net.Services
             string resource,
             Method method = Method.GET,
             bool authorization = true, 
-            Action<RestRequest> requestAction = null)
+            Action<RestRequest> requestAction = null) 
+        where T : class
         {
+            var item = _api._cache.Get<T>(resource);
+            if (item != null)
+            {
+                Console.WriteLine($"Got object from cache with key {resource}");
+                return item;
+            }
             var request = new RestRequest(resource, method);
             requestAction?.Invoke(request);
             if (authorization)
@@ -32,6 +39,7 @@ namespace Fortnite.Net.Services
                 request.AddHeader("Authorization", $"bearer {_api.LoginModel.AccessToken}");
             }
             var response = await _restClient.HandleRequest<T>(request);
+            _api._cache.Set(resource, response);
             return response;
         }
 

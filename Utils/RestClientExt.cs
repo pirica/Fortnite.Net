@@ -19,15 +19,6 @@ namespace Fortnite.Net.Utils
             var error = JsonConvert.DeserializeObject<EpicError>(raw);
             throw new EpicException(error);
         }
-        
-        /*public static async Task HandleRequestNoType(this RestClient client, RestRequest request)
-        {
-            var response = await client.ExecuteAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK) return;
-            var raw = Encoding.UTF8.GetString(response.RawBytes);
-            var error = JsonConvert.DeserializeObject<EpicError>(raw);
-            throw new EpicException(error);
-        }*/
-        
+
     }
 }

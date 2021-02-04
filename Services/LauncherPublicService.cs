@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Fortnite.Net.Model.Manifest;
+using Fortnite.Net.Utils;
 using RestSharp;
 
 namespace Fortnite.Net.Services
@@ -21,6 +22,26 @@ namespace Fortnite.Net.Services
 
         public AppManifest GetManifest() =>
             GetManifestAsync().GetAwaiter().GetResult();
+
+        public async Task<ChunkManifest> GetChunkManifestAsync(AppManifest manifest)
+        {
+            var item = manifest.Items["MANIFEST"];
+            var request = new RestRequest($"{item.Distribution}{item.Path}?{item.Signature}");
+            var response = await FortniteApi.DefaultRestClient.HandleRequest<ChunkManifest>(request);
+            return response;
+        }
+
+        public ChunkManifest GetChunkManifest(AppManifest manifest) =>
+            GetChunkManifestAsync(manifest).GetAwaiter().GetResult();
+
+        public async Task<ChunkManifest> GetChunkManifestAsync()
+        {
+            var manifest = await GetManifestAsync();
+            return await GetChunkManifestAsync(manifest);
+        }
+
+        public ChunkManifest GetChunkManifest() =>
+            GetChunkManifestAsync().GetAwaiter().GetResult();
 
     }
 }
