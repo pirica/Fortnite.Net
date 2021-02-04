@@ -1,4 +1,6 @@
-﻿namespace Fortnite.Net.Model.Mcp
+﻿using Fortnite.Net.Model.Fortnite;
+
+namespace Fortnite.Net.Model.Mcp
 {
     public static class McpBodies
     {
@@ -181,6 +183,103 @@
             ExpectedTotalPrice = expectedTotalPrice,
             GameContext = gameContext
         };
+
+        public static object CreatePurchaseOrUpgradeHomebaseNodePayload(string nodeId) => new
+        {
+            NodeId = nodeId
+        };
+
+        public static object CreatePurchaseResearchStatUpgradePayload(string statId) => new
+        {
+            StatId = statId
+        };
+
+        public static object CreateQueryProfilePayload() => new object();
+
+        public static object CreateRecycleItemPayload(string targetItemId) => new
+        {
+            TargetItemId = targetItemId
+        };
+
+        public static object CreateRecycleItemBatchPayload(params string[] targetItemIds) => new
+        {
+            TargetItemIds = targetItemIds
+        };
+
+        public static object CreateRefreshExpeditionsPayload() => new object();
+
+        public static object CreateRefundItemPayload(string targetItemId) => new
+        {
+            TargetItemId = targetItemId
+        };
         
+        public static object CreateRefundMtxPurchasePayload(string purchaseId, bool quickReturn) => new
+        {
+            PurchaseId = purchaseId,
+            QuickReturn = quickReturn
+        };
+
+        public static object CreateRemoveGiftBoxPayload(params string[] giftBoxItemIds) => new
+        {
+            GiftBoxItemIds = giftBoxItemIds
+        };
+        
+        public static object CreateResearchItemFromCollectionBookPayload(string templateId) => new
+        {
+            TemplateId = templateId
+        };
+
+        public static object CreateRespecAlterationPayload(
+            string targetItemId,
+            string alterationSlot,
+            string alterationId
+        ) => new
+        {
+            TargetItemId = targetItemId,
+            AlterationSlot = alterationSlot,
+            AlterationId = alterationId
+        };
+
+        public static object CreateSelectStartOptionsPayload(
+            string characterTemplateId,
+            string displayName,
+            string affiliateId
+        ) => new
+        {
+            CharacterTemplateId = characterTemplateId,
+            DisplayName = displayName,
+            AffiliateId = affiliateId
+        };
+
+        public static object CreateSetAffiliateNamePayload(string affiliateName) => new
+        {
+            AffiliateName = affiliateName
+        };
+
+        public static object CreateSetAvatarAndFlagsPayload(string newAvatar, string newFlag) => new
+        {
+            NewAvatar = newAvatar,
+            NewFlag = newFlag
+        };
+
+        public static object CreateSetCosmeticLockerSlotPayload(
+            string lockerItem,
+            string category,
+            string itemToSlot,
+            int slotIndex,
+            params VariantUpdate[] variantUpdates
+        ) => new
+        {
+            LockerItem = lockerItem,
+            Category = category,
+            ItemToSlot = itemToSlot,
+            SlotIndex = slotIndex,
+            VariantUpdated = variantUpdates
+        };
+        
+        /*public static object CreateSetHomebaseBannerPayload(
+            
+        )*/
+
     }
 }

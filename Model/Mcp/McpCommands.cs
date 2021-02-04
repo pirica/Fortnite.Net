@@ -2,7 +2,7 @@
 {
     public static class McpCommands
     {
-
+        
         public const string AbandonExpedition = "AbandonExpedition"; // Profiles: campaign | MCPs: athena
         public const string ActivateConsumable = "ActivateConsumable"; // Profiles: campaign | MCPs: athena
         public const string ApplyAlteration = "ApplyAlteration"; // Profiles: athena | MCPs: fortnite
@@ -36,22 +36,23 @@
         public const string MarkNewQuestNotificationSent = "MarkNewQuestNotificationSent"; // Profile: athena | MCPs: fortnite
         public const string OpenCardPack = "OpenCardPack"; // Profiles: campaign | MCPs: fortnite
         public const string PopulatePrerolledOffers = "PopulatePrerolledOffers"; // Profiles: campaign | MCPs: fortnite
-        public const string PurchaseCatalogEntry = "PurchaseCatalogEntry";
-        public const string PurchaseOrUpgradeHomebaseNode = "PurchaseOrUpgradeHomebaseNode";
-        public const string PurchaseResearchStatUpgrade = "PurchaseResearchStatUpgrade";
-        public const string QueryProfile = "QueryProfile";
-        public const string RecycleItem = "RecycleItem";
-        public const string RecycleItemBatch = "RecycleItemBatch";
-        public const string RefreshExpeditions = "RefreshExpeditions";
-        public const string RefundItem = "RefundItem";
-        public const string RefundMtxPurchase = "RefundMtxPurchase";
-        public const string RemoveGiftBox = "RemoveGiftBox";
-        public const string ResearchItemFromCollectionBook = "ResearchItemFromCollectionBook";
-        public const string RespecAlternations = "RespecAlternations";
-        public const string SelectStartOptions = "SelectStartOptions";
-        public const string SetAvatarAndFlags = "SetAvatarAndFlags";
-        public const string SetCosmeticLockerSlot = "SetCosmeticLockerSlot";
-        public const string SetHomebaseBanner = "SetHomebaseBanner";
+        public const string PurchaseCatalogEntry = "PurchaseCatalogEntry"; // Profiles: athena | MCPs: fortnite, wex
+        public const string PurchaseOrUpgradeHomebaseNode = "PurchaseOrUpgradeHomebaseNode"; // Profiles: campaign | MCPs: fortnite
+        public const string PurchaseResearchStatUpgrade = "PurchaseResearchStatUpgrade"; // Profiles: campaign | MCPs: fortnite
+        public const string QueryProfile = "QueryProfile"; // Profile: all | MCPs: fortnite, wex, ut, orion
+        public const string RecycleItem = "RecycleItem"; // Profiles: campaign | MCPs: fortnite
+        public const string RecycleItemBatch = "RecycleItemBatch"; // Profiles: campaign | MCPs: fortnite
+        public const string RefreshExpeditions = "RefreshExpeditions"; // Profiles: campaign | MCPs: fortnite
+        public const string RefundItem = "RefundItem"; // Profiles: campaign | MCPs: athena
+        public const string RefundMtxPurchase = "RefundMtxPurchase"; // Profiles: common_core | MCPs: athena
+        public const string RemoveGiftBox = "RemoveGiftBox"; // Profiles: common_core | MCPs: athena
+        public const string ResearchItemFromCollectionBook = "ResearchItemFromCollectionBook"; // Profiles: campaign | MCPs: fortnite
+        public const string RespecAlteration = "RespecAlteration"; // Profiles: campaign | MCPs: fortnite
+        public const string SelectStartOptions = "SelectStartOptions"; // Profiles: profile0 | MCPs: wex
+        public const string SetAffiliateName = "SetAffiliateName"; // Profiles: common_core | MCPs: fortnite
+        public const string SetAvatarAndFlags = "SetAvatarAndFlags"; // Profiles: profile0 | MCPs: ut
+        public const string SetCosmeticLockerSlot = "SetCosmeticLockerSlot"; // Profiles: athena | MCPs: fortnite
+        public const string SetHomebaseBanner = "SetHomebaseBanner"; // Profiles: common_core | MCPs: fortnite
         public const string SetHomebaseName = "SetHomebaseName";
         public const string SetIntroGamePlayed = "SetIntroGamePlayed";
         public const string SetMtxPlatform = "SetMtxPlatform";
