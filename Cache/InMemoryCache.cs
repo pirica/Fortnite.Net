@@ -22,7 +22,7 @@ namespace Fortnite.Net.Cache
         {
             if (item != null)
             {
-                MemoryCache.Default.Add(key, item, DateTimeOffset.Now.AddSeconds(Api._cacheSeconds));
+                MemoryCache.Default.Add(key, item, DateTimeOffset.Now.AddSeconds(Api.CacheSeconds));
             }
         }
         
