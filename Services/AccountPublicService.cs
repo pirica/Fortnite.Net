@@ -43,13 +43,48 @@ namespace Fortnite.Net.Services
         public VerifyResponse VerifyToken(string token, bool includePerms = false) =>
             VerifyTokenAsync(token, includePerms).GetAwaiter().GetResult();
 
-        public async Task<LoginModel> GetEgToken() => 
+        public async Task<LoginModel> GetEgTokenAsync() => 
             await SendBaseAsync<LoginModel>("/account/api/oauth/token", Method.POST, false, request =>
             {
                 request.AddParameter("grant_type", "client_credentials");
                 request.AddParameter("token_type", "eg1");
                 request.AddHeader("Authorization", $"basic {ClientToken.EgsClient}");
             });
+
+        public LoginModel GetEgToken() =>
+            GetEgTokenAsync().GetAwaiter().GetResult();
+
+        public async Task KillAuthSessionsAsync(string killType)
+        {
+            await SendBaseAsync<object>($"/account/api/oauth/sessions/kill?killType={killType}", Method.DELETE);
+        }
+
+        public void KillAuthSessions(string killType) =>
+            KillAuthSessionsAsync(killType).GetAwaiter().GetResult();
+
+        public async Task KillAuthSessionAsync(string accessToken)
+        {
+            await SendBaseAsync<object>($"/account/api/oauth/sessions/kill/{accessToken}", Method.DELETE);
+        }
+
+        public void KillAuthSession(string accessToken) =>
+            KillAuthSessionAsync(accessToken).GetAwaiter().GetResult();
+
+        public async Task<object> QueryUserInfoAsync(string id) =>
+            await SendBaseAsync<object>($"/account/api/public/account/{id}");
+        
+        
+
+        // TODO queryExternalIdMappingsByDisplayName
+        // TODO queryExternalIdMappingsById
+        // TODO queryUserIdFromEmail
+        // TODO removeExternalAccount
+        // TODO queryExternalAccountsByType
+        // TODO queryExternalAccounts
+        // TODO deleteDeviceAuth
+        // TODO createDeviceAuth
+        // TODO queryDeviceAuths 2x
+        // TODO queryUserMetaData
 
     }
 }

@@ -7,7 +7,7 @@ namespace Fortnite.Net.Exceptions
     {
         
         public EpicException(EpicError error) : 
-            base($"{error.ErrorMessage} ({error.ErrorCode})") {}
+            base($"{error?.ErrorMessage} ({error?.ErrorCode})") {}
 
     }
 }
