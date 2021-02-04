@@ -17,8 +17,8 @@ namespace Fortnite.Net
 
         internal static readonly RestClient DefaultRestClient = new RestClient();
 
-        internal readonly InMemoryCache _cache;
-        internal readonly int _cacheSeconds;
+        internal readonly InMemoryCache? Cache;
+        internal readonly int CacheSeconds;
         
         public delegate void LoginEventHandler(LoginModel model);
         public event LoginEventHandler? Login;
@@ -86,11 +86,15 @@ namespace Fortnite.Net
             Device? device,
             string clientToken,
             string? userAgent,
-            int cacheSeconds)
+            int cacheSeconds,
+            bool useCache)
         {
+            if (useCache)
+            {
+                Cache = new InMemoryCache(this);
+                CacheSeconds = cacheSeconds;
+            }
             Device = device;
-            _cache = new InMemoryCache(this);
-            _cacheSeconds = cacheSeconds;
             _exchangeCode = exchangeCode;
             _authorizationCode = authorizationCode;
             _clientToken = clientToken;

@@ -19,10 +19,17 @@ namespace Fortnite.Net
         public string? ClientToken { get; set; }
         public string? UserAgent { get; set; }
         public int CacheSeconds { get; set; }
+        public bool UseCache { get; set; }
 
-        public FortniteApiBuilder UseCache(int cacheSeconds = 60)
+        public FortniteApiBuilder SetCacheSeconds(int cacheSeconds = 60)
         {
             CacheSeconds = cacheSeconds;
+            return this;
+        }
+
+        public FortniteApiBuilder SetUseCache(bool useCache)
+        {
+            UseCache = useCache;
             return this;
         }
 
@@ -64,7 +71,7 @@ namespace Fortnite.Net
         }
         
         public FortniteApi Build() =>
-            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent, CacheSeconds);
+            new FortniteApi(ExchangeToken, AuthorizationCode, Device, ClientToken ?? Net.ClientToken.FortnitePcGameClient, UserAgent, CacheSeconds, UseCache);
 
         }
 }
