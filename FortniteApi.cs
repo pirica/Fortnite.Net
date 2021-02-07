@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 using Fortnite.Net.Cache;
 using Fortnite.Net.Model.Account;
@@ -126,6 +129,27 @@ namespace Fortnite.Net
                 _restClient.UserAgent = userAgent;
             };
         }
+
+        public async Task SaveDeviceToFileAsync(string path, bool deleteIfExists = true)
+        {
+            if (!deleteIfExists && File.Exists(path))
+            {
+                throw new FortniteApiException("A file already exists with that name.");
+            }
+            if (Device == null)
+            {
+                throw new FortniteApiException("Tried to save device to file but device was null.");
+            }
+            var content = JsonConvert.SerializeObject(Device);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            await File.WriteAllTextAsync(path, content);
+        }
+
+        public void SaveDeviceToFile(string path, bool deleteIfExists = true) =>
+            SaveDeviceToFileAsync(path).GetAwaiter().GetResult();
 
         #region LoginWithDevice
         public async Task LoginWithDeviceAsync(Device device = null!)
