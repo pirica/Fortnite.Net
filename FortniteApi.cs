@@ -149,7 +149,7 @@ namespace Fortnite.Net
         }
 
         public void SaveDeviceToFile(string path, bool deleteIfExists = true) =>
-            SaveDeviceToFileAsync(path).GetAwaiter().GetResult();
+            SaveDeviceToFileAsync(path, deleteIfExists).GetAwaiter().GetResult();
 
         #region LoginWithDevice
         public async Task LoginWithDeviceAsync(Device device = null!)
