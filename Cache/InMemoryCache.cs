@@ -5,7 +5,7 @@ namespace Fortnite.Net.Cache
 {
     public sealed class InMemoryCache : ICacheService
     {
-
+        
         internal readonly FortniteApi Api;
 
         public InMemoryCache(FortniteApi api)

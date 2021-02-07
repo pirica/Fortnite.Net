@@ -53,20 +53,19 @@
         public const string SetAvatarAndFlags = "SetAvatarAndFlags"; // Profiles: profile0 | MCPs: ut
         public const string SetCosmeticLockerSlot = "SetCosmeticLockerSlot"; // Profiles: athena | MCPs: fortnite
         public const string SetHomebaseBanner = "SetHomebaseBanner"; // Profiles: common_core | MCPs: fortnite
-        public const string SetHomebaseName = "SetHomebaseName";
-        public const string SetIntroGamePlayed = "SetIntroGamePlayed";
-        public const string SetMtxPlatform = "SetMtxPlatform";
-        public const string SetReceivedGitEnabled = "SetReceivedGitEnabled";
-        public const string SetRewardGraphConfig = "SetRewardGraphConfig";
-        public const string SetSquadAsCurrent = "SetSquadAsCurrent";
-        public const string StartMatchmaking = "StartMatchmaking";
-        public const string UnlockRegion = "UnlockRegion";
-        public const string UnlockRewardNode = "UnlockRewardNode";
-        public const string UpdateAccountHeadlessStatus = "UpdateAccountHeadlessStatus";
-        public const string UpdateHideoutIsValid = "UpdateHideoutIsValid";
-        public const string UpdateQuestClientObjectives = "UpdateQuestClientObjectives";
-        public const string UpdateSubscriptions = "UpdateSubscriptions";
-        public const string VisitHideout = "VisitHideout";
+        public const string SetHomebaseName = "SetHomebaseName"; // Profiles: common_public | MCPs: fortnite
+        public const string SetIntroGamePlayed = "SetIntroGamePlayed"; // Profiles: common_core | MCPs: fortnite
+        public const string SetMtxPlatform = "SetMtxPlatform"; // Profiles: common_core | MCPs: fortnite
+        public const string SetReceivedGitEnabled = "SetReceivedGitEnabled"; // Profiles: common_core | MCPs: fortnite
+        public const string SetRewardGraphConfig = "SetRewardGraphConfig"; // Profiles Athena | MCPs: fortnite
+        public const string SetSquadAsCurrent = "SetSquadAsCurrent"; // Profiles: profile0 | MCPs: ocean
+        public const string StartMatchmaking = "StartMatchmaking"; // Profiles: multiplayer | MCPs: wex
+        public const string UnlockRegion = "UnlockRegion"; // Profiles: levels | MCPs: wex
+        public const string UnlockRewardNode = "UnlockRewardNode"; // Profiles: athena | MCPs: fortnite
+        public const string UpdateAccountHeadlessStatus = "UpdateAccountHeadlessStatus"; // Profiles: profile0 | MCPs: wex
+        public const string UpdateHideoutIsValid = "UpdateHideoutIsValid"; // Profiles: profile0 | MCPs: ocean
+        public const string UpdateSubscriptions = "UpdateSubscriptions"; // Profiles: profile0 | MCPs: ocean
+        public const string VisitHideout = "VisitHideout"; // Profiles: profile0 | MCPs: ocean
 
     }
 }

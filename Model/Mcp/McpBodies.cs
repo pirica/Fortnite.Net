@@ -1,4 +1,5 @@
-﻿using Fortnite.Net.Model.Fortnite;
+﻿using System.Net;
+using Fortnite.Net.Model.Fortnite;
 
 namespace Fortnite.Net.Model.Mcp
 {
@@ -56,27 +57,27 @@ namespace Fortnite.Net.Model.Mcp
             CollectorsToClaim = collectorsToClaim
         };
 
-        public static object CreateClaimCollectionBookRewardsPayload() => new object();
+        public static object CreateClaimCollectionBookRewardsPayload() => new();
 
-        public static object CreateClaimDifficultyIncreaseRewardsPayload() => new object();
+        public static object CreateClaimDifficultyIncreaseRewardsPayload() => new();
 
-        public static object CreateClaimImportFriendsRewardPayload() => new object();
+        public static object CreateClaimImportFriendsRewardPayload() => new();
 
-        public static object CreateClaimLoginRewardPayload() => new object();
+        public static object CreateClaimLoginRewardPayload() => new();
 
         public static object CreateClaimMfaEnabledPayload(bool bClaimForStw = false) => new
         {
             bClaimForStw
         };
 
-        public static object CreateClaimMissionAlertRewardsPayload() => new object();
+        public static object CreateClaimMissionAlertRewardsPayload() => new();
         
         public static object CreateClaimQuestRewardPayload(string questId) => new
         {
             QuestId = questId
         };
 
-        public static object CreateClientQuestLoginPayload() => new object();
+        public static object CreateClientQuestLoginPayload() => new();
 
         public static object CreateCollectExpeditionPayload(string expeditionId, string expeditionTemplate) => new
         {
@@ -117,9 +118,9 @@ namespace Fortnite.Net.Model.Mcp
             ItemToSlot = itemToSlot
         };
 
-        public static object CreateGenerateDailyQuestsPayload() => new object();
+        public static object CreateGenerateDailyQuestsPayload() => new();
 
-        public static object CreateGetMcpTimeForLoginPayload() => new object();
+        public static object CreateGetMcpTimeForLoginPayload() => new();
 
         public static object CreateGiftCatalogEntryPayload(
             string offerId,
@@ -167,7 +168,7 @@ namespace Fortnite.Net.Model.Mcp
             CardPackItemId = cardPackItemId
         };
 
-        public static object CreatePopulatePrerolledOffersPayload() => new object();
+        public static object CreatePopulatePrerolledOffersPayload() => new();
 
         public static object CreatePurchaseCatalogEntryPayload(
             string offerId,
@@ -194,7 +195,7 @@ namespace Fortnite.Net.Model.Mcp
             StatId = statId
         };
 
-        public static object CreateQueryProfilePayload() => new object();
+        public static object CreateQueryProfilePayload() => new();
 
         public static object CreateRecycleItemPayload(string targetItemId) => new
         {
@@ -206,7 +207,7 @@ namespace Fortnite.Net.Model.Mcp
             TargetItemIds = targetItemIds
         };
 
-        public static object CreateRefreshExpeditionsPayload() => new object();
+        public static object CreateRefreshExpeditionsPayload() => new();
 
         public static object CreateRefundItemPayload(string targetItemId) => new
         {
@@ -276,10 +277,72 @@ namespace Fortnite.Net.Model.Mcp
             SlotIndex = slotIndex,
             VariantUpdated = variantUpdates
         };
-        
-        /*public static object CreateSetHomebaseBannerPayload(
-            
-        )*/
+
+        public static object CreateSetHomebaseBannerPayload(
+            string homebaseBannerColorId,
+            string homebaseBannerIconId
+        ) => new
+        {
+            HomebaseBannerColorId = homebaseBannerColorId,
+            HomebaseBannerIconId = homebaseBannerIconId
+        };
+
+        public static object CreateSetHomebaseNamePayload(string homebaseName) => new
+        {
+            HomebaseName = homebaseName
+        };
+
+        public static object CreateSetIntroGamePlayedPayload() => new();
+
+        public static object CreateSetMtxPlatformPayload(string newPlatform) => new
+        {
+            NewPlatform = newPlatform
+        };
+
+        public static object CreateSetReceiveGiftsEnabledPayload(bool bReceiveGifts) => new
+        {
+            BReceiveGifts = bReceiveGifts
+        };
+
+        public static object CreateSetRewardGraphConfigPayload(string rewardGraphId, params string[] state) => new
+        {
+            State = state,
+            RewardGraphId = rewardGraphId
+        };
+
+        public static object CreateSetSquadAsCurrentPayload(string squadMcpId) => new
+        {
+            SquadMcpId = squadMcpId
+        };
+
+        public static object CreateStartMatchmakingPayload() => new();
+
+        public static object CreateUnlockRegionPayload(string regionId) => new
+        {
+            RegionId = regionId
+        };
+
+        public static object CreateUnlockRewardNodePayload(
+            string nodeId,
+            string rewardGraphId,
+            string rewardCfg
+        ) => new
+        {
+            NodeId = nodeId,
+            RewardGraphID = rewardGraphId,
+            RewardCfg = rewardCfg
+        };
+
+        public static object CreateUpdateAccountHeadlessStatusPayload() => new();
+
+        public static object CreateUpdateHideoutIsValidPayload(bool bAreAllRoomsConnected = true) => new
+        {
+            BAreAllRoomsConnected = bAreAllRoomsConnected
+        };
+
+        public static object CreateUpdateSubscriptionsPayload() => new();
+
+        public static object CreateVisitHideoutPayload() => new();
 
     }
 }
